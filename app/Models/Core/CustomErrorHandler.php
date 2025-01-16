@@ -14,8 +14,7 @@ final class CustomErrorHandler
     public static function initializeFormExceptions(): void
     {
         ErrorHandler::getInstance()->exception(function (FormException $exception) {
-            $exception->getForm()?->registerFeedback();
-            Flash::error($exception->getMessage());
+            Flash::error($exception->getForm()?->getErrorMessages() ?? $exception->getMessage());
             $redirectPath = $exception->getRedirectPath() ?? Application::getInstance()->getRequest()->getReferer();
             Response::builder()->redirect($redirectPath)->send();
         });

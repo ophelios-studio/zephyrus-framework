@@ -2,7 +2,6 @@
 
 use InvalidArgumentException;
 use ReflectionClass;
-use ReflectionException;
 use stdClass;
 use ValueError;
 
@@ -11,11 +10,10 @@ abstract class Entity
     private stdClass $rawData;
 
     /**
-     * Creates an instance based on the database row.
+     * Creates an instance based on the database row which normally should be the result of the associated view.
      *
      * @param ?stdClass $row
      * @return ?static
-     * @throws ReflectionException
      */
     public static function build(?stdClass $row): ?static
     {
@@ -28,7 +26,7 @@ abstract class Entity
         foreach ($row as $name => $value) {
             if (property_exists($instance, $name)) {
                 $reflectionType = $reflection->getProperty($name)->getType();
-                if ($reflectionType instanceof \ReflectionUnionType) { // Do not consider Obj1|Obj2 types ...
+                if ($reflectionType instanceof \ReflectionUnionType) { // Do not consider Obj1|Obj2 types ... user must defined manually.
                     continue;
                 }
                 if (!$reflectionType->isBuiltin()) {

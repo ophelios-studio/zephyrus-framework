@@ -1,6 +1,8 @@
 {layout layouts/main.latte}
 
+{varType string $title}
+
 {block content}
-    <h1>Homepage</h1>
+    <h1 class="mt-5">{$title} 👋</h1>
     <p>{localize("strings.welcome")}</p>
 {/block}

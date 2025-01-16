@@ -35,7 +35,7 @@ abstract class Controller extends BaseController
              * String representation of the currently loaded language (e.g. français (Canada)).
              */
             "loaded_language" => $this->getLoadedLanguage(),
-            "loaded_locale" => Application::getInstance()->getLocalization()->getLoadedLocale(),
+            "loaded_locale" => Application::getInstance()->getLocalization()->getLocale(),
 
             /**
              * List of all installed and available languages.
@@ -95,7 +95,7 @@ abstract class Controller extends BaseController
         $localization = Application::getInstance()->getLocalization();
         $loadedLanguage = "";
         foreach ($localization->getInstalledLanguages() as $language) {
-            if ($language->locale == $localization->getLoadedLocale()) {
+            if ($language->locale == $localization->getLocale()) {
                 $loadedLanguage = $language->lang . ' (' . $language->country . ')';
             }
         }

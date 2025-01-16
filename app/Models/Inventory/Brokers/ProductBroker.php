@@ -13,25 +13,25 @@ class ProductBroker extends DatabaseBroker
 
     public function findById(int $productId): ?stdClass
     {
-        return $this->selectSingle("SELECT * FROM product WHERE product_id = ?", [$productId]);
+        return $this->selectSingle("SELECT * FROM product WHERE id = ?", [$productId]);
     }
 
     public function insert(Product $product): int
     {
         return $this->selectSingle("INSERT INTO product(provider, brand, name, price) 
-                                               VALUES (?, ?, ?, ?) RETURNING product_id", [
+                                               VALUES (?, ?, ?, ?) RETURNING id", [
             $product->provider,
             $product->brand,
             $product->name,
             $product->price
-        ])->product_id;
+        ])->id;
     }
 
     public function update(Product $old, Product $new): int
     {
         $this->query("UPDATE product 
                                SET provider = ?, brand = ?, name = ?, price = ?
-                             WHERE product_id = ?", [
+                             WHERE id = ?", [
             $new->provider,
             $new->brand,
             $new->name,
@@ -43,7 +43,7 @@ class ProductBroker extends DatabaseBroker
 
     public function delete(Product $old): int
     {
-        $this->query("DELETE FROM product WHERE product_id = ?", [$old->id]);
+        $this->query("DELETE FROM product WHERE id = ?", [$old->id]);
         return $this->getLastAffectedCount();
     }
 }

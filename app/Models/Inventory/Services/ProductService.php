@@ -9,12 +9,12 @@ class ProductService
 {
     public static function readAll(): array
     {
-        return Product::buildArray((new ProductBroker())->findAll());
+        return Product::buildArray(new ProductBroker()->findAll());
     }
 
     public static function read(int $productId): ?Product
     {
-        return Product::build((new ProductBroker())->findById($productId));
+        return Product::build(new ProductBroker()->findById($productId));
     }
 
     public static function insert(Form $form): Product
@@ -35,6 +35,6 @@ class ProductService
 
     public static function remove(Product $old): int
     {
-        return (new ProductBroker())->delete($old);
+        return new ProductBroker()->delete($old);
     }
 }
