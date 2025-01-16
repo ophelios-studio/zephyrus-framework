@@ -12,7 +12,7 @@
   "prefer-stable": true,
   "require": {
     "php": ">=8.2",
-    "ophelios/zephyrus": "0.7.0",
+    "ophelios/zephyrus": "0.8.0",
     "twilio/sdk": "^6.0",
     "symfony/var-dumper": "*",
     "vlucas/phpdotenv": "^5.5",

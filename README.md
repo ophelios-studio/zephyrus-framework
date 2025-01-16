@@ -8,8 +8,7 @@ Projet destiné à être utilisé comme base de gabarit pour les projets ZEPHYRU
 Assurez-vous d'avoir le [Moteur Docker](https://www.docker.com/products/docker-desktop/) installé et à jour.
 
 ### Premier démarrage
-Copiez le fichier `.env.docker` vers un fichier nommé `.env`. Ensuite, entrez votre jeton GitHub pour la variable d'environnement `GITHUB_ACCESS_TOKEN`.
-Lancez finalement la construction de l'environnement de développement.
+Copiez le fichier `.env.docker` vers un fichier nommé `.env`.
 
 ```shell
 docker compose up
@@ -18,7 +17,7 @@ docker exec -it zephyrus_webserver composer install
 
 ### Mise à jour des dépendances (Composer)
 ```shell
-docker exec -it foundation_webserver composer update
+docker exec -it zephyrus_webserver composer update
 ```
 
 ### Redémarrer la base de données (au besoin)
@@ -55,17 +54,16 @@ mailer:
   from_address: "info@ophelios.com"
   from_name: "Zephyrus"
   smtp:
-    enabled: true
     host: "localhost"
     port: 1025
     encryption: "none"
-    username: ""
-    password: ""
+    username: "none"
+    password: "none"
 ```
 
 ### Génération de la cache Latte
 ```shell
-docker exec -it foundation_webserver composer latte-cache
+docker exec -it zephyrus_webserver composer latte-cache
 ```
 
 ### Supprimer les images Docker

@@ -1,9 +1,7 @@
 services:
   webserver:
     build:
-      context: "./docker/services/php82"
-      args:
-        - GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN}
+      context: "./docker/services/php"
     container_name: "zephyrus_webserver"
     restart: 'always'
     ports:
