@@ -1,4 +1,5 @@
 application:
+  debug: !php/const DEBUG
   project: "Template"
   env: "dev"
   contact_email: "info@ophelios.com"
@@ -8,11 +9,8 @@ application:
 locale:
   currency: "CAD"
   timezone: "America/Montreal"
-  language: "fr_CA"
   charset: "utf8"
-  format_date: "d LLLL yyyy"
-  format_time: "HH:mm"
-  format_datetime: "d LLLL yyyy, HH:mm"
+  locale: "fr_CA"
 
 mailer:
   transport: "smtp"
